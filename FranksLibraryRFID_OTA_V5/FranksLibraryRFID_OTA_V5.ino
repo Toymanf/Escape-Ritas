@@ -173,6 +173,11 @@ void callback(char* topic, byte* payload, unsigned int length) {
   } else if (message == "solve") {
     mqttSolve = true;
   }
+     else if (message == "resetSpi") {
+    SPI.end();
+    delay (20);
+    SPI.begin();                 
+  }
   else if (message == "Are you there?") {
     client.publish("/Egypt/Library/", "Library Puzzle OK");
   }
